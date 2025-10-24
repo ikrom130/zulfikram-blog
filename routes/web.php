@@ -26,6 +26,10 @@ Route::get('/about', function () {
     return view('about', ['title' => 'About Me']);
 });
 
+Route::get('/dashboard', [PostDashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::get('/dasboard/create', [PostDashboardController::class, 'create'])->middleware(['auth', 'verified'])->name('post.create');
+
 Route::get('/article/{post:slug}', function (Post $post) {
 
     return view('article', ['title' => 'Single Post', 'post' => $post]);
@@ -38,8 +42,6 @@ Route::get('/contact', function () {
 // Route::get('/dashboard', function () {
 //     return view('dashboard');
 // })->middleware(['auth', 'verified'])->name('dashboard');
-
-Route::get('/dashboard', [PostDashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
