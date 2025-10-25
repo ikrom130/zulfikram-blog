@@ -8,7 +8,7 @@
             class="flex justify-between items-center pb-4 mb-4 rounded-t border-b sm:mb-5 dark:border-gray-600"
         >
             <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
-                Add Product
+                Add Post
             </h3>
         </div>
         <!-- Modal body -->
