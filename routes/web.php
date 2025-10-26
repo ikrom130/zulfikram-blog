@@ -28,6 +28,8 @@ Route::get('/about', function () {
 
 Route::get('/dashboard', [PostDashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
 
+Route::post('/dashboard', [PostDashboardController::class, 'store'])->middleware(['auth', 'verified'])->name('dashboard');
+
 Route::get('/dasboard/create', [PostDashboardController::class, 'create'])->middleware(['auth', 'verified'])->name('post.create');
 
 Route::get('/article/{post:slug}', function (Post $post) {
