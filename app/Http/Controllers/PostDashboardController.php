@@ -71,7 +71,7 @@ class PostDashboardController extends Controller
             'body' => $request->body,
         ]);
 
-        return redirect('/dashboard');
+        return redirect('/dashboard')->with('success', 'New post has been added!');
     }
 
     /**
