@@ -79,9 +79,9 @@
                                                 </button>
                                             </li>
                                             <li>
-                                                <button type="button" class="w-full text-start hover:bg-yellow-100 block py-2 px-4 dark:hover:bg-gray-600 dark:hover:text-white">
+                                                <a href="dashboard/{{ $post->slug }}/edit" class="w-full text-start hover:bg-yellow-100 block py-2 px-4 dark:hover:bg-gray-600 dark:hover:text-white">
                                                     <span>Edit</span>
-                                                </button>
+                                                </a>
                                             </li>
                                         </ul>
                                         <div class="py-1 text-gray-700">
