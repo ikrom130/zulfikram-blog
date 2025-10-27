@@ -74,9 +74,9 @@
                                     <div id="option-{{ $post->id }}" class="hidden z-10 w-35 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600">
                                         <ul class="py-1 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="option-{{ $post->id }}-button">
                                             <li>
-                                                <button type="button" class="w-full text-start hover:bg-blue-200 block py-2 px-4 dark:hover:bg-gray-600 dark:hover:text-white">
+                                                <a href="dashboard/{{ $post->slug }}" class="w-full text-start hover:bg-blue-200 block py-2 px-4 dark:hover:bg-gray-600 dark:hover:text-white">
                                                     <span>Show</span>
-                                                </button>
+                                                </a>
                                             </li>
                                             <li>
                                                 <a href="dashboard/{{ $post->slug }}/edit" class="w-full text-start hover:bg-yellow-100 block py-2 px-4 dark:hover:bg-gray-600 dark:hover:text-white">
