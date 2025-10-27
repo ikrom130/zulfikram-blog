@@ -1,6 +1,6 @@
 <nav class="bg-gray-800/50" aria-label="Global">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div class="flex h-16 items-center justify-between">
+        <div class="flex h-16 items-center">
             <div class="flex items-center">
                 <div class="shrink-0">
                     <img src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=500" alt="Your Company" class="size-8" />
@@ -16,6 +16,8 @@
                         <x-my-nav-link href="/contact" :current="request()->is('contact')">Contact</x-my-nav-link>
                     </div>
                 </div>
+            </div>
+            <div class="ml-auto flex items-center">
                 <div class="hidden md:block">
                     <div class="ml-4 flex items-center md:m-end-0 md:ml-6">
 
