@@ -67,7 +67,7 @@
 
         {{-- avatar preview --}}
         <div>
-            <img class="w-20 h-20 ring-2 ring-gray-400 dark:ring-gray-400 rounded-full" src="{{ $user->avatar ? asset($user->avatar) : asset('storage/' . $user->avatar) }}" alt="{{ $user->name }}" id="avatar-preview"/>
+            <img class="w-20 h-20 ring-2 ring-gray-400 dark:ring-gray-400 rounded-full" src="{{ $user->avatar ? asset('storage/' . $user->avatar) : asset('img/avatar-default.jpg') }}" alt="{{ $user->name }}" id="avatar-preview"/>
         </div>
 
         <div class="flex items-center gap-4">

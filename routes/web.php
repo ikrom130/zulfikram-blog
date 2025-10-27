@@ -54,6 +54,7 @@ Route::middleware('auth', 'verified')->group(function () {
     Route::delete('/dashboard/{post:slug}', [PostDashboardController::class, 'destroy']);
     Route::get('/dashboard/{post:slug}/edit', [PostDashboardController::class, 'edit']);
     Route::patch('/dashboard/{post:slug}', [PostDashboardController::class, 'update']);
+    Route::get('/dashboard/{post:slug}', [PostDashboardController::class, 'show']);
 });
 
 Route::middleware('auth')->group(function () {
