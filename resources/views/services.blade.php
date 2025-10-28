@@ -42,7 +42,7 @@
                             </a>
                         </h2>
                         <p class="mb-5 font-light text-gray-500 dark:text-gray-400">
-                            {{ Str::limit($post['body'], 100) }}
+                            {!! Str::limit($post['body'], 100) !!}
                         </p>
                         <div class="flex justify-between items-center">
                             <a href="/services?author={{ $post->author->username }}">
