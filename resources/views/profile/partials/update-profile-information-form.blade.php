@@ -1,3 +1,9 @@
+@push('styles')
+    <link href="https://unpkg.com/filepond@^4/dist/filepond.css" rel="stylesheet" />
+    <link
+    href="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css"
+    rel="stylesheet" />
+@endpush
 <section>
     <header>
         <h2 class="text-lg font-medium text-gray-900">
@@ -86,6 +92,7 @@
     </form>
 </section>
 
+@push('scripts')
 <script>
     const input = document.getElementById('avatar_input_file');
     const previewPhoto = () => {
@@ -100,4 +107,40 @@
         }
     }
     input.addEventListener("change", previewPhoto);
+</script>    
+
+<script src="https://unpkg.com/filepond-plugin-image-transform/dist/filepond-plugin-image-transform.js"></script>
+<script src="https://unpkg.com/filepond-plugin-image-resize/dist/filepond-plugin-image-resize.js"></script>
+<script src="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.js"></script>
+<script src="https://unpkg.com/filepond-plugin-file-validate-type/dist/filepond-plugin-file-validate-type.js"></script>
+<script src="https://unpkg.com/filepond-plugin-file-validate-size/dist/filepond-plugin-file-validate-size.js"></script>
+<script src="https://unpkg.com/filepond@^4/dist/filepond.js"></script>
+{{-- implements filepound --}}
+<script>
+    // Register the plugin
+    FilePond.registerPlugin(FilePondPluginImageTransform);
+    FilePond.registerPlugin(FilePondPluginImageResize);
+    FilePond.registerPlugin(FilePondPluginImagePreview);
+    FilePond.registerPlugin(FilePondPluginFileValidateType);
+    FilePond.registerPlugin(FilePondPluginFileValidateSize);
+
+    // Get a reference to the file input element
+    const inputElement = document.querySelector('#avatar_input_file');
+
+    // Create a FilePond instance
+    const pond = FilePond.create(inputElement, {
+        acceptedFileTypes: ['image/*'],
+        maxFileSize: '5MB',
+        imageResizeTargetWidth: '600',
+        imageResizeMode: 'contain',
+        imageResizeUpscale: false,
+        server: {
+            url: '/upload',
+            headers: {
+                'X-CSRF-TOKEN' : '{{ csrf_token() }}'
+            }
+        }
+    });
 </script>
+@endpush
+
