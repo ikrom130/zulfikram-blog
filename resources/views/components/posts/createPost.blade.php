@@ -47,7 +47,7 @@
                     <label for="body" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                         Body
                     </label>
-                    <textarea name="body" id="body" value="" rows="4" class="@error('body') bg-red-50 border-red-500 text-red-900 focus:ring-red-500 focus:border-red-500  dark:text-red-500 dark:placeholder-red-500 dark:border-red-500 @enderror block p-2.5 w-full text-sm text-gray-900 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Write body post here.."> 
+                    <textarea name="body" id="body" value="" rows="4" class="hidden @error('body') bg-red-50 border-red-500 text-red-900 focus:ring-red-500 focus:border-red-500  dark:text-red-500 dark:placeholder-red-500 dark:border-red-500 @enderror block p-2.5 w-full text-sm text-gray-900 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Write body post here.."> 
                         {!! old('body') !!}
                     </textarea>
                     <div id="editor" value="">
