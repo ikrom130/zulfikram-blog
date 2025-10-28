@@ -1,3 +1,6 @@
+@push('styles')
+    <link href="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.snow.css" rel="stylesheet" />
+@endpush
 <div class="relative p-4 w-full max-w-4xl h-full md:h-auto">
     <!-- Modal content -->
     <div class="relative p-4 bg-white rounded-lg shadow dark:bg-gray-800 sm:p-5">
@@ -8,7 +11,7 @@
             </h3>
         </div>
         <!-- Modal body -->
-        <form action="/dashboard/{{ $post->slug }}" method="POST">
+        <form action="/dashboard/{{ $post->slug }}" method="POST" id="form-post">
             @csrf
             @method('PATCH')
             <div class="gap-4 mb-4 sm:grid-cols-2">
@@ -45,9 +48,12 @@
                     <label for="body" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                         Body
                     </label>
-                    <textarea name="body" id="body" rows="4" class="@error('body') bg-red-50 border-red-500 text-red-900 focus:ring-red-500 focus:border-red-500  dark:text-red-500 dark:placeholder-red-500 dark:border-red-500 @enderror block p-2.5 w-full text-sm text-gray-900 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Write body post here.."> 
+                    <textarea name="body" id="body" rows="4" class="hidden @error('body') bg-red-50 border-red-500 text-red-900 focus:ring-red-500 focus:border-red-500  dark:text-red-500 dark:placeholder-red-500 dark:border-red-500 @enderror block p-2.5 w-full text-sm text-gray-900 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Write body post here.."> 
                         {{ old('body') ?? $post->body }}
                     </textarea>
+                    <div id="editor">
+                        {!! old('body', $post->body) !!}
+                    </div>
                     @error('body')
                         <p class="mt-2 text-xs text-red-600 dark:text-red-500">
                             {{ $message }}
@@ -66,3 +72,29 @@
         </form>
     </div>
 </div>
+
+@push('scripts')
+    <!-- Include the Quill library -->
+    <script src="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.js"></script>
+
+    <!-- Initialize Quill editor -->
+    <script>
+    const quill = new Quill('#editor', {
+        theme: 'snow',
+        placeholder: "Write body post here.."
+    });
+
+    const FormPost = document.querySelector('#form-post');
+    const bodyPost = document.querySelector('#body');
+    const quillEditor = document.querySelector('#editor');
+    
+    FormPost.addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        const conten = quillEditor.children[0].innerHTML;
+        bodyPost.value = conten;
+
+        this.submit();
+    })
+    </script>
+@endpush
